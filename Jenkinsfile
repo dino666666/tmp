@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('checkout code') {
             steps {
+                sh "pwd"
                 //checkout([$class: 'GitSCM', branches: [[name: '*/分支']], extensions: [], userRemoteConfigs: [[credentialsId: '秘钥id', url: '你的仓库地址']]])
                 checkout(
                     [
