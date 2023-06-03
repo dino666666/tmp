@@ -5,8 +5,17 @@ pipeline {
         stage('checkout code') {
             steps {
                 //checkout([$class: 'GitSCM', branches: [[name: '*/分支']], extensions: [], userRemoteConfigs: [[credentialsId: '秘钥id', url: '你的仓库地址']]])
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [],
-                userRemoteConfigs: [[credentialsId: 'zh', url: 'git@github.com:dino666666/tmp.git']]])
+                checkout(
+                    [
+                        $class: 'GitSCM', 
+                        branches: [[name: '*/master']], 
+                        extensions: [
+                            [$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false],
+                            [$class: 'CloneOption', shallow: false, noTags: false, reference: '', timeout: null, depth: 0, honorRefspec: false]
+                        ],
+                        userRemoteConfigs: [[credentialsId: 'zh', url: 'git@github.com:dino666666/tmp.git']]
+                    ]
+                )
             }
         }
         stage('auto test') {
