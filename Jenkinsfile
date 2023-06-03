@@ -12,7 +12,7 @@ pipeline {
         stage('auto test') {
             steps {
                 sh 'pwd'
-                sh 'python3 test_01.py'
+                sh 'python3 debug.py'
             }
         }
     }
