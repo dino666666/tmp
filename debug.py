@@ -8,7 +8,8 @@ import pytest
 
 
 if __name__ == "__main__":
-     os.system('pytest -s test_demo.py --alluredir ./report/allure_raw')
+     pytest.main(['-s', '-v', 'test_demo.py', '-q', '--alluredir', './report/allure_raw'])
+     # os.system('pytest -s test_demo.py --alluredir ./report/allure_raw')
      # import os
 
      # _out = os.popen("allure generate allure-results -o allure_reports/ --clean").read()
